@@ -22,11 +22,12 @@ class MalwarePredictor:
         # Determine the project root dynamically
         # __file__ is backend/apk_analyzer/predictor.py
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(os.path.dirname(current_dir))
+        backend_dir = os.path.dirname(current_dir)
+        models_dir = os.path.join(backend_dir, "models")
 
-        model_path = os.path.join(project_root, "models", self.MODEL_NAME)
-        scaler_path = os.path.join(project_root, "models", "drebin_scaler.pkl")
-        features_path = os.path.join(project_root, "models", "drebin_features.json")
+        model_path = os.path.join(models_dir, self.MODEL_NAME)
+        scaler_path = os.path.join(models_dir, "drebin_scaler.pkl")
+        features_path = os.path.join(models_dir, "drebin_features.json")
 
         print("========================================")
         print("Loading AI Model...")
@@ -42,7 +43,7 @@ class MalwarePredictor:
             with open(features_path, "r") as f:
                 self.feature_names = json.load(f)
         except FileNotFoundError as e:
-            print(f"Error: Missing model file. Please ensure models are located in {os.path.join(project_root, 'models')}")
+            print(f"Error: Missing model file. Please ensure models are located in {models_dir}")
             print(f"Details: {e}")
             raise
 
