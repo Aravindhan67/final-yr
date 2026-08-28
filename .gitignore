@@ -2,9 +2,7 @@
 dataset/
 *.csv
 *.npy
-*.pkl
-*.keras
-*.h5
+
 
 # Ignore uploads (APKs)
 backend/uploads/
