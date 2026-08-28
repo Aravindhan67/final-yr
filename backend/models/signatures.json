@@ -1,0 +1,32 @@
+{
+  "suspicious_permissions": [
+    "android.permission.SEND_SMS",
+    "android.permission.READ_SMS",
+    "android.permission.RECEIVE_SMS",
+    "android.permission.READ_CONTACTS",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.SYSTEM_ALERT_WINDOW",
+    "android.permission.REQUEST_INSTALL_PACKAGES",
+    "android.permission.BIND_DEVICE_ADMIN",
+    "android.permission.INSTALL_PACKAGES"
+  ],
+  "dangerous_combinations": [
+    ["android.permission.RECEIVE_SMS", "android.permission.INTERNET"],
+    ["android.permission.SEND_SMS", "android.permission.INTERNET"],
+    ["android.permission.READ_CONTACTS", "android.permission.INTERNET"],
+    ["android.permission.READ_PHONE_STATE", "android.permission.INTERNET"],
+    ["android.permission.RECORD_AUDIO", "android.permission.INTERNET"],
+    ["android.permission.ACCESS_FINE_LOCATION", "android.permission.INTERNET"]
+  ],
+  "suspicious_apis": [
+    "Ldalvik/system/DexClassLoader;",
+    "Ldalvik/system/PathClassLoader;",
+    "Ljava/lang/Runtime;->exec",
+    "Landroid/telephony/TelephonyManager;->getDeviceId",
+    "Landroid/telephony/TelephonyManager;->getSubscriberId",
+    "Landroid/telephony/SmsManager;->sendTextMessage",
+    "Ljava/net/HttpURLConnection;->connect",
+    "Ljavax/crypto/Cipher;->getInstance",
+    "Landroid/content/pm/PackageManager;->setComponentEnabledSetting"
+  ]
+}

@@ -1,0 +1,30 @@
+# Ignore datasets (Too large for GitHub)
+dataset/
+*.csv
+*.npy
+*.pkl
+*.keras
+*.h5
+
+# Ignore uploads (APKs)
+backend/uploads/
+backend/backend/uploads/
+*.apk
+
+# Python
+venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.env
+
+# Logs and histories
+logs/
+history/
+output/
+processed/
