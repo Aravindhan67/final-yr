@@ -6,7 +6,8 @@ from routes.device_routes import device_bp
 
 app = Flask(__name__)
 
-CORS(app)
+# Enable CORS for all routes and allow credentials
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 # Allow uploads up to 200 MB (default Flask limit is 16 MB)
 app.config['MAX_CONTENT_LENGTH'] = 200 * 1024 * 1024
