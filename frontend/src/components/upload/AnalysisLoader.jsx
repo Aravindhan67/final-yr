@@ -33,24 +33,35 @@ const AnalysisLoader = ({ uploadProgress = 0 }) => {
   // Advance through steps automatically
   useEffect(() => {
     let stepIndex = 0;
+    let timer;
 
     const advance = () => {
       if (stepIndex >= STEPS.length) return;
 
       const delay = STEPS[stepIndex]?.duration || 1500;
-      const timer = setTimeout(() => {
-        setCompletedSteps(prev => [...prev, stepIndex]);
+      timer = setTimeout(() => {
+        // Capture the current value of stepIndex for the state update closure
+        const currentStepIndex = stepIndex;
+        
+        setCompletedSteps(prev => {
+          if (prev.includes(currentStepIndex)) return prev;
+          return [...prev, currentStepIndex];
+        });
+        
         stepIndex++;
         setCurrentStep(stepIndex);
+        
         // Update progress bar proportionally to steps
         setBarProgress(Math.min(95, Math.round(((stepIndex) / STEPS.length) * 95)));
+        
         advance();
       }, delay);
-
-      return timer;
     };
 
     advance();
+
+    // Cleanup timer on unmount (important for StrictMode and component lifecycle)
+    return () => clearTimeout(timer);
   }, []);
 
   // Merge real upload progress into bar during step 0

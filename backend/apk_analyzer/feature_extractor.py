@@ -14,8 +14,9 @@ class FeatureExtractor:
 
         # Load feature list
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(os.path.dirname(current_dir))
-        features_path = os.path.join(project_root, "models", "drebin_features.json")
+        backend_dir = os.path.dirname(current_dir)
+        features_path = os.path.join(backend_dir, "models", "drebin_features.json")
+        
         with open(features_path, "r") as f:
             self.feature_names = json.load(f)
 
